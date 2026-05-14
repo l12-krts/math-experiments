@@ -12,6 +12,7 @@ import ShapeNets from './components/ShapeNets'
 import { subscribe } from './util/events'
 
 const clamp01 = (value) => Math.min(1, Math.max(0, value));
+const TAU = Math.PI * 2;
 
 const shapeDimensionDefaults = {
   "triangular pyramid": { size: 1.25 },
@@ -200,7 +201,7 @@ function CurrentModalContent({
         <Separator className="my-4 max-w-70" />
         <div className="max-w-70 mt-4 flex flex-col gap-3">
           <Button className={autoFold ? "bg-(--accent) text-accent-foreground" : ""} onClick={() => setAutoFold(!autoFold)}>
-            {autoFold ? "Παύση κίνησης" : "Ημιτονική κίνηση"}
+            {autoFold ? (<><IoPauseCircle/><Label>Πάυση Κίνησης</Label></>) : (<><IoPlayCircle/><Label>Ημιτονική κίνηση</Label></>)}
           </Button>
           <Slider
             minValue={0.2}
